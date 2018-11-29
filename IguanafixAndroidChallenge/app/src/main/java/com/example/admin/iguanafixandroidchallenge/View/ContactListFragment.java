@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +16,7 @@ import com.example.admin.iguanafixandroidchallenge.ViewModel.ContactListViewMode
 public class ContactListFragment extends Fragment {
 
     private ContactListViewModel mViewModel;
-    private RecyclerView contactsRecyclerView;
-    private ContactListRecyclerViewAdapter adapter;
+
 
     public static ContactListFragment newInstance() {
         return new ContactListFragment();
@@ -27,7 +25,10 @@ public class ContactListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.contact_list_fragment, container, false);
+        View view =  inflater.inflate(R.layout.contact_list_fragment, container, false);
+        mViewModel = ViewModelProviders.of(this).get(ContactListViewModel.class);
+        mViewModel.setRecyclerView(view, getActivity());
+        return view;
     }
 
     @Override
