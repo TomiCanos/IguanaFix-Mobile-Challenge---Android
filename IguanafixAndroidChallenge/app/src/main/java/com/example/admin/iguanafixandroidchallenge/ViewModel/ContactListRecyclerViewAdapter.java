@@ -1,6 +1,5 @@
 package com.example.admin.iguanafixandroidchallenge.ViewModel;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 import com.example.admin.iguanafixandroidchallenge.Model.Contact;
 import com.example.admin.iguanafixandroidchallenge.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter {
@@ -19,6 +19,10 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter {
 
     public ContactListRecyclerViewAdapter(List<Contact> contacts) {
         this.contacts = contacts;
+    }
+
+    public ContactListRecyclerViewAdapter() {
+        contacts = new ArrayList<>();
     }
 
     @NonNull
@@ -42,18 +46,25 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter {
         return contacts.size();
     }
 
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
+
     private class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView contactName;
+        private TextView contactFirstName;
+        private TextView contactLastName;
         private ImageView contactPhoto;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            contactName = itemView.findViewById(R.id.contactCellNameTextView);
+            contactFirstName = itemView.findViewById(R.id.contactCellFirstNameTextView);
+            contactLastName = itemView.findViewById(R.id.contactCellLastNameTextView);
             contactPhoto = itemView.findViewById(R.id.contactCellPhotoImageView);
         }
 
         public void bindContact(Contact contact) {
-            contactName.setText(contact.getFirst_name() + " " + contact.getLast_name());
+            contactFirstName.setText(contact.getFirst_name());
+            contactLastName.setText(contact.getLast_name());
         }
     }
 }

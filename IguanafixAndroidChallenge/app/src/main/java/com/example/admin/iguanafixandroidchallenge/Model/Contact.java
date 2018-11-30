@@ -8,9 +8,19 @@ public class Contact {
     private String thumb;
     private String photo;
 
+    public Contact() {
+    }
+
     public Contact(String first_name, String last_name) {
         this.first_name = first_name;
         this.last_name = last_name;
+    }
+
+    public Contact(String first_name, String last_name, String thumb, String photo) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.thumb = thumb;
+        this.photo = photo;
     }
 
     public String getFirst_name() {

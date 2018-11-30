@@ -31,11 +31,5 @@ public class ContactListFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(ContactListViewModel.class);
-        // TODO: Use the ViewModel
-    }
 
 }
