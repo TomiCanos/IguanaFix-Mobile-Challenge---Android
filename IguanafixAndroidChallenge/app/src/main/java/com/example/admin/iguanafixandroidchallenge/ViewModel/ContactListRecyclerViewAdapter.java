@@ -17,10 +17,6 @@ import java.util.List;
 public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter {
     private List<Contact> contacts;
 
-    public ContactListRecyclerViewAdapter(List<Contact> contacts) {
-        this.contacts = contacts;
-    }
-
     public ContactListRecyclerViewAdapter() {
         contacts = new ArrayList<>();
     }
@@ -48,23 +44,31 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter {
 
     public void setContacts(List<Contact> contacts) {
         this.contacts = contacts;
+        notifyDataSetChanged();
     }
 
     private class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView contactFirstName;
-        private TextView contactLastName;
+        private TextView contactName;
+        private TextView contactHomePhoneNumber;
+        private TextView contactCellphonePhoneNumber;
+        private TextView contactOfficePhoneNumber;
+
         private ImageView contactPhoto;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            contactFirstName = itemView.findViewById(R.id.contactCellFirstNameTextView);
-            contactLastName = itemView.findViewById(R.id.contactCellLastNameTextView);
+            contactName = itemView.findViewById(R.id.contactCellNameTextView);
             contactPhoto = itemView.findViewById(R.id.contactCellPhotoImageView);
+            contactHomePhoneNumber = itemView.findViewById(R.id.contactCellHomePhoneNumberTextView);
+            contactCellphonePhoneNumber = itemView.findViewById(R.id.contactCellCellphonePhoneNumberTextView);
+            contactOfficePhoneNumber = itemView.findViewById(R.id.contactCellOfficePhoneNumberTextView);
         }
 
         public void bindContact(Contact contact) {
-            contactFirstName.setText(contact.getFirst_name());
-            contactLastName.setText(contact.getLast_name());
+            contactName.setText(contact.getFirst_name() + " " + contact.getLast_name());
+            contactHomePhoneNumber.setText(contact.getPhones().get(0).getNumber());
+            contactCellphonePhoneNumber.setText(contact.getPhones().get(1).getNumber());
+            contactOfficePhoneNumber.setText(contact.getPhones().get(2).getNumber());
         }
     }
 }

@@ -14,5 +14,5 @@ public interface ContactService {
     Call<List<Contact>> getContacts();
 
     @GET("/contacts/{contactId}")
-    Call<Contact>getContact(@Path("contactId") String contactId);
+    Call<Contact> getContact(@Path("contactId") String contactId);
 }

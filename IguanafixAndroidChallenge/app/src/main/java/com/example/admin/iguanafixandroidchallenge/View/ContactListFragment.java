@@ -10,26 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.admin.iguanafixandroidchallenge.R;
-import com.example.admin.iguanafixandroidchallenge.ViewModel.ContactListRecyclerViewAdapter;
 import com.example.admin.iguanafixandroidchallenge.ViewModel.ContactListViewModel;
 
 public class ContactListFragment extends Fragment {
 
     private ContactListViewModel mViewModel;
 
-
-    public static ContactListFragment newInstance() {
-        return new ContactListFragment();
-    }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.contact_list_fragment, container, false);
+        View view = inflater.inflate(R.layout.contact_list_fragment, container, false);
         mViewModel = ViewModelProviders.of(this).get(ContactListViewModel.class);
+        mViewModel.getContactsfromAPI();
         mViewModel.setRecyclerView(view, getActivity());
         return view;
     }
-
 
 }

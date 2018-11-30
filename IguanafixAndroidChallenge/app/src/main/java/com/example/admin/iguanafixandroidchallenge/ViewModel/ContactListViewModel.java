@@ -22,7 +22,6 @@ public class ContactListViewModel extends ViewModel {
 
     public ContactListViewModel() {
         contacts = new ArrayList<>();
-        getContactsfromAPI();
         adapter = new ContactListRecyclerViewAdapter();
     }
 
@@ -32,15 +31,14 @@ public class ContactListViewModel extends ViewModel {
         contactsRecyclerView.setAdapter(adapter);
     }
 
-    private void getContactsfromAPI() {
-       ContactDAO contactDAO = new ContactDAO();
+    public void getContactsfromAPI() {
+        ContactDAO contactDAO = new ContactDAO();
 
-       contactDAO.getContactsAsync(new ResultListener<List<Contact>>() {
+        contactDAO.getContactsAsync(new ResultListener<List<Contact>>() {
             @Override
             public void finish(List<Contact> result) {
                 contacts = result;
                 adapter.setContacts(contacts);
-                adapter.notifyDataSetChanged();
             }
         });
     }
