@@ -5,23 +5,25 @@
     android:layout_height="150dp"
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="10dp">
+    app:cardCornerRadius="20dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary">
 
-        <android.support.v7.widget.AppCompatImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/contactCellPhotoImageView"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="118dp"
+            android:layout_height="118dp"
             android:layout_centerVertical="true"
-            android:hapticFeedbackEnabled="true"></android.support.v7.widget.AppCompatImageView>
+            android:layout_margin="16dp"
+            android:scaleType="centerCrop"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="1dp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:layout_toRightOf="@id/contactCellPhotoImageView"
@@ -36,9 +38,9 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:text="Home:"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Home:"
                 android:textColor="@color/colorAccent"
                 android:textSize="10dp"
                 android:textStyle="bold" />
@@ -51,9 +53,9 @@
                 android:textSize="12dp" />
 
             <TextView
-                android:text="Cellphone:"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Cellphone:"
                 android:textColor="@color/colorAccent"
                 android:textSize="10dp"
                 android:textStyle="bold" />
@@ -66,9 +68,9 @@
                 android:textSize="12dp" />
 
             <TextView
-                android:text="Office:"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Office:"
                 android:textColor="@color/colorAccent"
                 android:textSize="10dp"
                 android:textStyle="bold" />

@@ -1,5 +1,6 @@
 package com.example.admin.iguanafixandroidchallenge.ViewModel;
 
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
 import com.example.admin.iguanafixandroidchallenge.Model.Contact;
 import com.example.admin.iguanafixandroidchallenge.R;
 
@@ -52,7 +55,6 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter {
         private TextView contactHomePhoneNumber;
         private TextView contactCellphonePhoneNumber;
         private TextView contactOfficePhoneNumber;
-
         private ImageView contactPhoto;
 
         public ViewHolder(@NonNull View itemView) {
@@ -64,11 +66,14 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter {
             contactOfficePhoneNumber = itemView.findViewById(R.id.contactCellOfficePhoneNumberTextView);
         }
 
-        public void bindContact(Contact contact) {
+        public void bindContact(final Contact contact) {
             contactName.setText(contact.getFirst_name() + " " + contact.getLast_name());
             contactHomePhoneNumber.setText(contact.getPhones().get(0).getNumber());
             contactCellphonePhoneNumber.setText(contact.getPhones().get(1).getNumber());
             contactOfficePhoneNumber.setText(contact.getPhones().get(2).getNumber());
+            RequestBuilder<Drawable> thumbDrawable = Glide.with(itemView).load(contact.getThumb());
+            thumbDrawable.into(contactPhoto);
+            Glide.with(itemView).load(contact.getPhoto()).thumbnail(thumbDrawable).into(contactPhoto);
         }
     }
 }
