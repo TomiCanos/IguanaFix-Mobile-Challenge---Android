@@ -52,8 +52,8 @@ public class ContactDetailFragment extends Fragment {
         officeNumber = view.findViewById(R.id.contactDetailofficeNumberTextView);
         workAdress = view.findViewById(R.id.contactDetailWorkAdressTextView);
         homeAdress = view.findViewById(R.id.contactDetailHomeAdressTextView);
-        RequestBuilder<Drawable> thumbDrawable = Glide.with(view).load(contact.getThumb());
 
+        RequestBuilder<Drawable> thumbDrawable = Glide.with(view).load(contact.getThumb());
         Glide.with(view).load(contact.getPhoto()).thumbnail(thumbDrawable).into(photo);
         name.setText(contact.getFirst_name() + " " + contact.getLast_name());
         birthDate.setText(contact.getUser_id());
@@ -62,8 +62,6 @@ public class ContactDetailFragment extends Fragment {
         officeNumber.setText(contact.getPhones().get(2).getNumber());
         workAdress.setText(contact.getUser_id());
         homeAdress.setText(contact.getUser_id());
-
-
 
         return view;
     }

@@ -29,11 +29,11 @@ public class ContactListFragment extends Fragment {
         mViewModel.getContactsfromAPI();
         mViewModel.inicializeAdapterAndSetOnClickContactSell(new ContactListRecyclerViewAdapter(
                 new ContactListRecyclerViewAdapter.OnClickContactCellNotifier() {
-            @Override
-            public void openClickedContact(Contact contact) {
-                onClickContactCellNotifier.openClickedContact(contact);
-            }
-        }));
+                    @Override
+                    public void openClickedContact(Contact contact) {
+                        onClickContactCellNotifier.openClickedContact(contact);
+                    }
+                }));
         mViewModel.setRecyclerView(view, getActivity());
         return view;
     }

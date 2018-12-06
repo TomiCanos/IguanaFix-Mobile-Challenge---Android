@@ -16,7 +16,8 @@
             android:id="@+id/contactDetailPhotoImageView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:scaleType="centerCrop" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,7 +33,7 @@
                 android:text="BIRTHDATE"
                 android:textAlignment="gravity"
                 android:textColor="@color/colorAccent"
-                android:textSize="15dp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -56,7 +57,7 @@
                 android:layout_weight="1"
                 android:text="PHONES"
                 android:textColor="@color/colorAccent"
-                android:textSize="15dp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -97,7 +98,7 @@
                 android:layout_weight="1"
                 android:text="ADRESSES"
                 android:textColor="@color/colorAccent"
-                android:textSize="15dp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -124,6 +125,19 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="3">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/gradient" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_anchor="@id/contactDetailPhotoImageView"
@@ -136,7 +150,7 @@
             android:layout_margin="16dp"
             android:text="Name"
             android:textColor="@color/white"
-            android:textSize="25dp"
+            android:textSize="35dp"
             android:textStyle="bold" />
 
         <ImageView

@@ -81,7 +81,6 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter {
             contactCellphonePhoneNumber.setText(contact.getPhones().get(1).getNumber());
             contactOfficePhoneNumber.setText(contact.getPhones().get(2).getNumber());
             RequestBuilder<Drawable> thumbDrawable = Glide.with(itemView).load(contact.getThumb());
-            thumbDrawable.into(contactPhoto);
             Glide.with(itemView).load(contact.getPhoto()).thumbnail(thumbDrawable).into(contactPhoto);
         }
     }

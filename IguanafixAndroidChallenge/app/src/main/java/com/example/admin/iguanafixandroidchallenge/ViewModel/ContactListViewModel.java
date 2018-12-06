@@ -50,7 +50,7 @@ public class ContactListViewModel extends ViewModel {
         this.adapter = adapter;
     }
 
-    private void sortContactsAlphabetically(List<Contact> contacts){
+    private void sortContactsAlphabetically(List<Contact> contacts) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             Collections.sort(contacts, Comparator.comparing(Contact::getFirst_name));
         }
