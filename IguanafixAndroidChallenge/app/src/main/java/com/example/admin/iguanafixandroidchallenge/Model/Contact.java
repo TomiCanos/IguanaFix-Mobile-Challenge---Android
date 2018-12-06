@@ -1,8 +1,9 @@
 package com.example.admin.iguanafixandroidchallenge.Model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Contact {
+public class Contact implements Serializable {
     private String user_id;
     private String first_name;
     private String last_name;

@@ -19,9 +19,11 @@ import java.util.List;
 
 public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter {
     private List<Contact> contacts;
+    private OnClickContactCellNotifier onClickContactCellNotifier;
 
-    public ContactListRecyclerViewAdapter() {
+    public ContactListRecyclerViewAdapter(OnClickContactCellNotifier onClickContactCellNotifier) {
         contacts = new ArrayList<>();
+        this.onClickContactCellNotifier = onClickContactCellNotifier;
     }
 
     @NonNull
@@ -64,6 +66,13 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter {
             contactHomePhoneNumber = itemView.findViewById(R.id.contactCellHomePhoneNumberTextView);
             contactCellphonePhoneNumber = itemView.findViewById(R.id.contactCellCellphonePhoneNumberTextView);
             contactOfficePhoneNumber = itemView.findViewById(R.id.contactCellOfficePhoneNumberTextView);
+
+            contactPhoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickContactCellNotifier.openClickedContact(contacts.get(getAdapterPosition()));
+                }
+            });
         }
 
         public void bindContact(final Contact contact) {
@@ -75,5 +84,9 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter {
             thumbDrawable.into(contactPhoto);
             Glide.with(itemView).load(contact.getPhoto()).thumbnail(thumbDrawable).into(contactPhoto);
         }
+    }
+
+    public interface OnClickContactCellNotifier {
+        void openClickedContact(Contact contact);
     }
 }

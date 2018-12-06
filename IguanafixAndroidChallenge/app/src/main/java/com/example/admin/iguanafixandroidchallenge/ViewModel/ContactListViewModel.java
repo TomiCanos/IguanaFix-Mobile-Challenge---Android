@@ -25,7 +25,6 @@ public class ContactListViewModel extends ViewModel {
 
     public ContactListViewModel() {
         contacts = new ArrayList<>();
-        adapter = new ContactListRecyclerViewAdapter();
     }
 
     public void setRecyclerView(View view, FragmentActivity fragmentActivity) {
@@ -45,6 +44,10 @@ public class ContactListViewModel extends ViewModel {
                 adapter.setContacts(contacts);
             }
         });
+    }
+
+    public void inicializeAdapterAndSetOnClickContactSell(ContactListRecyclerViewAdapter adapter) {
+        this.adapter = adapter;
     }
 
     private void sortContactsAlphabetically(List<Contact> contacts){
