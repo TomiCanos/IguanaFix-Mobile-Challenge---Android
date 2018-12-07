@@ -1,23 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="125dp"
+    android:layout_marginBottom="125dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    app:cardBackgroundColor="@color/colorPrimary"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="30dp"
     tools:context=".View.ContactDetailFragment">
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/contactDetailPhotoImageView"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:scaleType="centerCrop" />
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/contactDetailPhotoImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/gradient" />
+
+            <TextView
+                android:id="@+id/ContactDetailNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/contactDetailPhotoImageView"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:text="Name"
+                android:textColor="@color/white"
+                android:textSize="35dp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -120,46 +150,8 @@
                 android:textSize="15dp" />
 
         </LinearLayout>
-
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="3">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:src="@drawable/gradient" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_anchor="@id/contactDetailPhotoImageView"
-        app:layout_anchorGravity="bottom">
-
-        <TextView
-            android:id="@+id/ContactDetailNameTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Name"
-            android:textColor="@color/white"
-            android:textSize="35dp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="16dp"
-            android:background="@color/colorAccent" />
-
-    </LinearLayout>
-
-</android.support.design.widget.CoordinatorLayout>
+</android.support.v7.widget.CardView>

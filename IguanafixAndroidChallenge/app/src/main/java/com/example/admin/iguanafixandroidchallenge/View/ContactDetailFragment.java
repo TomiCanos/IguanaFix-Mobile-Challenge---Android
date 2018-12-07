@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,7 @@ import com.bumptech.glide.RequestBuilder;
 import com.example.admin.iguanafixandroidchallenge.Model.Contact;
 import com.example.admin.iguanafixandroidchallenge.R;
 
-public class ContactDetailFragment extends Fragment {
+public class ContactDetailFragment extends DialogFragment {
 
     public static final String CONTACT_ID = "CONTACT_ID";
 
@@ -62,6 +63,8 @@ public class ContactDetailFragment extends Fragment {
         officeNumber.setText(contact.getPhones().get(2).getNumber());
         workAdress.setText(contact.getUser_id());
         homeAdress.setText(contact.getUser_id());
+
+        setCancelable(true);
 
         return view;
     }
