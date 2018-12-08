@@ -1,12 +1,11 @@
 package com.example.admin.iguanafixandroidchallenge.View;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,7 @@ import com.bumptech.glide.RequestBuilder;
 import com.example.admin.iguanafixandroidchallenge.Model.Contact;
 import com.example.admin.iguanafixandroidchallenge.R;
 
-public class ContactDetailFragment extends DialogFragment {
+public class ContactDetailFragment extends Fragment {
 
     public static final String CONTACT_ID = "CONTACT_ID";
 
@@ -64,7 +63,13 @@ public class ContactDetailFragment extends DialogFragment {
         workAdress.setText(contact.getUser_id());
         homeAdress.setText(contact.getUser_id());
 
-        setCancelable(true);
+        view.setOnDragListener(new View.OnDragListener() {
+            @Override
+            public boolean onDrag(View v, DragEvent event) {
+
+                return false;
+            }
+        });
 
         return view;
     }

@@ -2,7 +2,8 @@
     android:shape="rectangle">
 
     <gradient
-        android:angle="270"
+        android:type="radial"
+        android:gradientRadius="300dp"
         android:endColor="@color/colorPrimary"
         android:startColor="@color/translucid" />
 

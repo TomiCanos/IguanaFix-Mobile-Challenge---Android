@@ -1,4 +1,4 @@
-package com.example.admin.iguanafixandroidchallenge.ViewModel.Retrofit;
+package com.example.admin.iguanafixandroidchallenge.Retrofit;
 
 import com.example.admin.iguanafixandroidchallenge.Model.Contact;
 

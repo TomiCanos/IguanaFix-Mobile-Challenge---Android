@@ -67,7 +67,7 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter {
             contactCellphonePhoneNumber = itemView.findViewById(R.id.contactCellCellphonePhoneNumberTextView);
             contactOfficePhoneNumber = itemView.findViewById(R.id.contactCellOfficePhoneNumberTextView);
 
-            contactPhoto.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     onClickContactCellNotifier.openClickedContact(contacts.get(getAdapterPosition()));

@@ -1,157 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="125dp"
-    android:layout_marginBottom="125dp"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardBackgroundColor="@color/colorPrimary"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="30dp"
     tools:context=".View.ContactDetailFragment">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <RelativeLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            app:cardElevation="15dp">
 
-            <ImageView
-                android:id="@+id/contactDetailPhotoImageView"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop" />
+                android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/gradient" />
+                <ImageView
+                    android:src="@color/colorPrimaryDark"
+                    android:id="@+id/contactDetailBackgroundImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
 
-            <TextView
-                android:id="@+id/ContactDetailNameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/contactDetailPhotoImageView"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:text="Name"
-                android:textColor="@color/white"
-                android:textSize="35dp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/ContartactDetailNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/contactDetailBackgroundImageView"
+                    android:layout_marginLeft="8dp"
+                    android:text="Name"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
 
+            </RelativeLayout>
 
-        </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <ImageView
+            android:id="@+id/secondary_accent_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@color/colorSecondaryAccent" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="16dp"
             android:layout_weight="2"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="BIRTHDATE"
-                android:textAlignment="gravity"
-                android:textColor="@color/colorAccent"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/contactDetailBirthDateTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="contactDetailBirthDateTextView"
-                android:textColor="@color/white"
-                android:textSize="15dp" />
-
-            <ImageView
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorAccent" />
-
-            <TextView
-                android:layout_width="wrap_content"
-
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="PHONES"
-                android:textColor="@color/colorAccent"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_weight="2"
+                app:cardElevation="15dp">
 
-            <TextView
-                android:id="@+id/contactDetailHomeNumberTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="contactDetailHomeNumberTextView"
-                android:textColor="@color/white"
-                android:textSize="15dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="8dp">
 
-            <TextView
-                android:id="@+id/contactDetailCellphoneNumberTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="contactDetailCellphoneNumberTextView"
-                android:textColor="@color/white"
-                android:textSize="15dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:text="BIRTHDATE"
+                        android:textAlignment="gravity"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/contactDetailofficeNumberTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="contactDetailofficeNumberTextView"
-                android:textColor="@color/white"
-                android:textSize="15dp" />
+                    <TextView
+                        android:id="@+id/contactDetailBirthDateTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:text="contactDetailBirthDateTextView"
+                        android:textColor="@color/grey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
 
-            <ImageView
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorAccent" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="ADRESSES"
-                android:textColor="@color/colorAccent"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_weight="4"
+                app:cardElevation="15dp">
 
-            <TextView
-                android:id="@+id/contactDetailWorkAdressTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="contactDetailWorkAdressTextView"
-                android:textColor="@color/white"
-                android:textSize="15dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="8dp">
 
-            <TextView
-                android:id="@+id/contactDetailHomeAdressTextView"
-                android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:text="PHONES"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/contactDetailHomeNumberTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:text="contactDetailHomeNumberTextView"
+                        android:textColor="@color/grey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/contactDetailCellphoneNumberTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:text="contactDetailCellphoneNumberTextView"
+                        android:textColor="@color/grey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/contactDetailofficeNumberTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:text="contactDetailofficeNumberTextView"
+                        android:textColor="@color/grey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="contactDetailHomeAdressTextView"
-                android:textColor="@color/white"
-                android:textSize="15dp" />
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_weight="3"
+                app:cardElevation="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:text="ADRESSES"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/contactDetailWorkAdressTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:text="contactDetailWorkAdressTextView"
+                        android:textColor="@color/grey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/contactDetailHomeAdressTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:text="contactDetailHomeAdressTextView"
+                        android:textColor="@color/grey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
 
         </LinearLayout>
+
     </LinearLayout>
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/contactDetailPhotoImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerVertical="true"
+        android:layout_margin="32dp"
+        android:scaleType="centerCrop"
+        app:civ_border_color="@color/colorSecondaryAccent"
+        app:civ_border_width="1dp"
+        app:layout_anchor="@id/secondary_accent_line"
+        app:layout_anchorGravity="right" />
 
-
-</android.support.v7.widget.CardView>
+</android.support.design.widget.CoordinatorLayout>

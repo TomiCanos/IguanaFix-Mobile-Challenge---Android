@@ -9,8 +9,8 @@ import android.view.View;
 
 import com.example.admin.iguanafixandroidchallenge.Model.Contact;
 import com.example.admin.iguanafixandroidchallenge.R;
-import com.example.admin.iguanafixandroidchallenge.ViewModel.Retrofit.ContactDAO;
-import com.example.admin.iguanafixandroidchallenge.ViewModel.Retrofit.ResultListener;
+import com.example.admin.iguanafixandroidchallenge.Retrofit.ContactDAO;
+import com.example.admin.iguanafixandroidchallenge.Retrofit.ResultListener;
 
 import java.util.ArrayList;
 import java.util.Collections;

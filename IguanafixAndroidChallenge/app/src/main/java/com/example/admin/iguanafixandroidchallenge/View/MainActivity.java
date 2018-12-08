@@ -1,6 +1,5 @@
 package com.example.admin.iguanafixandroidchallenge.View;
 
-import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements ContactListFragme
         contactDetailFragment.setArguments(bundle);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.mainActivityContainer, contactDetailFragment, "tag");
+        fragmentTransaction.replace(R.id.mainActivityContainer, contactDetailFragment, "tag");
         fragmentTransaction.addToBackStack(null).commit();
     }
 }

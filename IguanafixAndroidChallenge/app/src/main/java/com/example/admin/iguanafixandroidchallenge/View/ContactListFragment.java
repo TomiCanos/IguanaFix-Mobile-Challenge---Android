@@ -19,11 +19,16 @@ public class ContactListFragment extends Fragment {
 
     private ContactListViewModel mViewModel;
     private OnClickContactCellNotifier onClickContactCellNotifier;
+    private View view;
 
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
+        if (view != null) {
+            return view;
+        }
         View view = inflater.inflate(R.layout.contact_list_fragment, container, false);
         mViewModel = ViewModelProviders.of(this).get(ContactListViewModel.class);
         mViewModel.getContactsfromAPI();
@@ -48,4 +53,9 @@ public class ContactListFragment extends Fragment {
         void openClickedContact(Contact contact);
     }
 
+    @Override
+    public void onStop() {
+        view = getView();
+        super.onStop();
+    }
 }
