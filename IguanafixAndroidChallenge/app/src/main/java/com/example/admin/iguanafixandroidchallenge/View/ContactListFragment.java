@@ -6,9 +6,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.widget.EditText;
 
 import com.example.admin.iguanafixandroidchallenge.Model.Contact;
 import com.example.admin.iguanafixandroidchallenge.R;
@@ -17,9 +22,12 @@ import com.example.admin.iguanafixandroidchallenge.ViewModel.ContactListViewMode
 
 public class ContactListFragment extends Fragment {
 
+    private EditText searchContactByNameEditText;
+    private RecyclerView contactsRecyclerView;
     private ContactListViewModel mViewModel;
     private OnClickContactCellNotifier onClickContactCellNotifier;
     private View view;
+    private String search;
 
 
     @Override
@@ -31,7 +39,12 @@ public class ContactListFragment extends Fragment {
         }
         View view = inflater.inflate(R.layout.contact_list_fragment, container, false);
         mViewModel = ViewModelProviders.of(this).get(ContactListViewModel.class);
-        mViewModel.getContactsfromAPI();
+
+        searchContactByNameEditText = view.findViewById(R.id.contactListNameEditText);
+        contactsRecyclerView = view.findViewById(R.id.contactListRecyclerView);
+        search = "";
+
+        mViewModel.getContactsfromAPIandNotifyAdapter();
         mViewModel.inicializeAdapterAndSetOnClickContactSell(new ContactListRecyclerViewAdapter(
                 new ContactListRecyclerViewAdapter.OnClickContactCellNotifier() {
                     @Override
@@ -39,7 +52,30 @@ public class ContactListFragment extends Fragment {
                         onClickContactCellNotifier.openClickedContact(contact);
                     }
                 }));
-        mViewModel.setRecyclerView(view, getActivity());
+        mViewModel.setRecyclerView(contactsRecyclerView, getActivity());
+
+
+        searchContactByNameEditText.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (count == 0) {
+                    mViewModel.getContactsfromAPIandNotifyAdapter();
+                } else {
+                    search = s.toString();
+                }
+                mViewModel.setsortedListToAdapter(mViewModel.searchContactbyName(search));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         return view;
     }
 
@@ -54,8 +90,9 @@ public class ContactListFragment extends Fragment {
     }
 
     @Override
-    public void onStop() {
+    public void onPause() {
         view = getView();
-        super.onStop();
+        super.onPause();
     }
+
 }

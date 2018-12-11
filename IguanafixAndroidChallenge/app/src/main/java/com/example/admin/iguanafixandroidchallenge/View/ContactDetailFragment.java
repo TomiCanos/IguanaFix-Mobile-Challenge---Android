@@ -30,6 +30,7 @@ public class ContactDetailFragment extends Fragment {
     private TextView officeNumber;
     private TextView workAdress;
     private TextView homeAdress;
+    private ImageView backgroundImage;
 
 
     public static ContactDetailFragment newInstance() {
@@ -52,6 +53,7 @@ public class ContactDetailFragment extends Fragment {
         officeNumber = view.findViewById(R.id.contactDetailofficeNumberTextView);
         workAdress = view.findViewById(R.id.contactDetailWorkAdressTextView);
         homeAdress = view.findViewById(R.id.contactDetailHomeAdressTextView);
+        backgroundImage = view.findViewById(R.id.contactDetailBackgroundImageView);
 
         RequestBuilder<Drawable> thumbDrawable = Glide.with(view).load(contact.getThumb());
         Glide.with(view).load(contact.getPhoto()).thumbnail(thumbDrawable).into(photo);
@@ -62,14 +64,7 @@ public class ContactDetailFragment extends Fragment {
         officeNumber.setText(contact.getPhones().get(2).getNumber());
         workAdress.setText(contact.getUser_id());
         homeAdress.setText(contact.getUser_id());
-
-        view.setOnDragListener(new View.OnDragListener() {
-            @Override
-            public boolean onDrag(View v, DragEvent event) {
-
-                return false;
-            }
-        });
+        Glide.with(view).load(R.drawable.contactdetailbackground2).into(backgroundImage);
 
         return view;
     }

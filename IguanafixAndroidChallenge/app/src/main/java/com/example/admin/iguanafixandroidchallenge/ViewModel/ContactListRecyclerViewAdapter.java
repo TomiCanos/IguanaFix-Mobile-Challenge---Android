@@ -1,6 +1,7 @@
 package com.example.admin.iguanafixandroidchallenge.ViewModel;
 
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.VectorDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
