@@ -1,7 +1,7 @@
-package com.example.admin.iguanafixandroidchallenge.ViewModel;
+package com.example.admin.iguanafixandroidchallenge.Adapter;
 
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.VectorDrawable;
+import android.graphics.drawable.PictureDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -36,6 +36,7 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter {
         return viewHolder;
     }
 
+    //elije a cual contanto de la vista inflar
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         Contact contact = contacts.get(i);
@@ -53,39 +54,41 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
+    //une los datos de la vista con los del contacto recibido
     private class ViewHolder extends RecyclerView.ViewHolder {
         private TextView contactName;
-        private TextView contactHomePhoneNumber;
-        private TextView contactCellphonePhoneNumber;
-        private TextView contactOfficePhoneNumber;
         private ImageView contactPhoto;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             contactName = itemView.findViewById(R.id.contactCellNameTextView);
             contactPhoto = itemView.findViewById(R.id.contactCellPhotoImageView);
-            contactHomePhoneNumber = itemView.findViewById(R.id.contactCellHomePhoneNumberTextView);
-            contactCellphonePhoneNumber = itemView.findViewById(R.id.contactCellCellphonePhoneNumberTextView);
-            contactOfficePhoneNumber = itemView.findViewById(R.id.contactCellOfficePhoneNumberTextView);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onClickContactCellNotifier.openClickedContact(contacts.get(getAdapterPosition()));
+                    onClickContactCellNotifier.openClickedContact
+                            (contacts.get(getAdapterPosition()));
                 }
             });
         }
 
         public void bindContact(final Contact contact) {
             contactName.setText(contact.getFirst_name() + " " + contact.getLast_name());
-            contactHomePhoneNumber.setText(contact.getPhones().get(0).getNumber());
-            contactCellphonePhoneNumber.setText(contact.getPhones().get(1).getNumber());
-            contactOfficePhoneNumber.setText(contact.getPhones().get(2).getNumber());
             RequestBuilder<Drawable> thumbDrawable = Glide.with(itemView).load(contact.getThumb());
-            Glide.with(itemView).load(contact.getPhoto()).thumbnail(thumbDrawable).into(contactPhoto);
+
+            //Hay un contacto que no tiene foto y como thumb trae un archivo svg en vez de un png
+            if (!contact.getThumb().contains(".png")) {
+                Glide.with(itemView).as(PictureDrawable.class).load(contact.getThumb())
+                        .into(contactPhoto);
+            } else {
+                Glide.with(itemView).load(contact.getPhoto()).thumbnail(thumbDrawable)
+                        .into(contactPhoto);
+            }
         }
     }
 
+    // funcion para abrir el detalle del contacto
     public interface OnClickContactCellNotifier {
         void openClickedContact(Contact contact);
     }

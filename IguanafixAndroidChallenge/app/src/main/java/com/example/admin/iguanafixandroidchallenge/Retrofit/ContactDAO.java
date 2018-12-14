@@ -25,6 +25,7 @@ public class ContactDAO {
         retrofit = retrofitBuilder.client(httpClient.build()).build();
     }
 
+    //hago el pedido asincronico a la api, si falla paso una lista vacia para que no rompa
     public void getContactsAsync(final ResultListener<List<Contact>> vmlistener) {
         ContactService contactService = retrofit.create(ContactService.class);
         Call<List<Contact>> call = contactService.getContacts();

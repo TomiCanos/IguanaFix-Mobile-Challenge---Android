@@ -17,7 +17,7 @@ import android.widget.EditText;
 
 import com.example.admin.iguanafixandroidchallenge.Model.Contact;
 import com.example.admin.iguanafixandroidchallenge.R;
-import com.example.admin.iguanafixandroidchallenge.ViewModel.ContactListRecyclerViewAdapter;
+import com.example.admin.iguanafixandroidchallenge.Adapter.ContactListRecyclerViewAdapter;
 import com.example.admin.iguanafixandroidchallenge.ViewModel.ContactListViewModel;
 
 public class ContactListFragment extends Fragment {
@@ -45,6 +45,7 @@ public class ContactListFragment extends Fragment {
         search = "";
 
         mViewModel.getContactsfromAPIandNotifyAdapter();
+
         mViewModel.inicializeAdapterAndSetOnClickContactSell(new ContactListRecyclerViewAdapter(
                 new ContactListRecyclerViewAdapter.OnClickContactCellNotifier() {
                     @Override
@@ -52,8 +53,8 @@ public class ContactListFragment extends Fragment {
                         onClickContactCellNotifier.openClickedContact(contact);
                     }
                 }));
-        mViewModel.setRecyclerView(contactsRecyclerView, getActivity());
 
+        mViewModel.setRecyclerView(contactsRecyclerView, getActivity());
 
         searchContactByNameEditText.addTextChangedListener(new TextWatcher() {
 
@@ -73,9 +74,9 @@ public class ContactListFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
+
         return view;
     }
 
@@ -85,10 +86,12 @@ public class ContactListFragment extends Fragment {
         onClickContactCellNotifier = (OnClickContactCellNotifier) getActivity();
     }
 
+    //funcion para abrir el detalle del contacto
     public interface OnClickContactCellNotifier {
         void openClickedContact(Contact contact);
     }
 
+    // esto es para que cuando minimicen la app no vuelva a cargar los datos de la vista
     @Override
     public void onPause() {
         view = getView();

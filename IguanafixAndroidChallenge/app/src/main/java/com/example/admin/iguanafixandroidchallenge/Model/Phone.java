@@ -1,6 +1,8 @@
 package com.example.admin.iguanafixandroidchallenge.Model;
 
-public class Phone {
+import java.io.Serializable;
+
+public class Phone implements Serializable {
     private String type;
     private String number;
 

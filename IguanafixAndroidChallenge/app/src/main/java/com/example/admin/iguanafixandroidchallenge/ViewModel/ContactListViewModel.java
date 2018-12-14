@@ -2,17 +2,12 @@ package com.example.admin.iguanafixandroidchallenge.ViewModel;
 
 import android.arch.lifecycle.ViewModel;
 import android.os.Build;
-import android.support.design.button.MaterialButton;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 
+import com.example.admin.iguanafixandroidchallenge.Adapter.ContactListRecyclerViewAdapter;
 import com.example.admin.iguanafixandroidchallenge.Model.Contact;
-import com.example.admin.iguanafixandroidchallenge.R;
 import com.example.admin.iguanafixandroidchallenge.Retrofit.ContactDAO;
 import com.example.admin.iguanafixandroidchallenge.Retrofit.ResultListener;
 
@@ -36,6 +31,7 @@ public class ContactListViewModel extends ViewModel {
         contactsRecyclerView.setAdapter(adapter);
     }
 
+    //cuando traigo los contactos le notifico que cambio el set de datos al adapter para que los muestre
     public void getContactsfromAPIandNotifyAdapter() {
         ContactDAO contactDAO = new ContactDAO();
 
@@ -53,11 +49,12 @@ public class ContactListViewModel extends ViewModel {
     }
 
     public List<Contact> searchContactbyName(String contactName) {
-        List <Contact> results = new ArrayList<>();
+        List<Contact> results = new ArrayList<>();
 
-        for (Contact contact: this.contacts) {
+        for (Contact contact : this.contacts) {
             String fullNameToLowerCase = contact.getFirst_name().toLowerCase() + contact.getLast_name().toLowerCase();
 
+            //paso todo a lower case para que no haya problema con mayusculas y minusculas
             if (fullNameToLowerCase.contains(contactName.toLowerCase())) {
                 results.add(contact);
             }

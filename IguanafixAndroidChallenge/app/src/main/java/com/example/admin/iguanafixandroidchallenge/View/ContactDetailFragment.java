@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.DragEvent;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.example.admin.iguanafixandroidchallenge.Model.Contact;
+import com.example.admin.iguanafixandroidchallenge.Model.Phone;
 import com.example.admin.iguanafixandroidchallenge.R;
 
 public class ContactDetailFragment extends Fragment {
@@ -28,9 +29,8 @@ public class ContactDetailFragment extends Fragment {
     private TextView homeNumber;
     private TextView cellphoneNumber;
     private TextView officeNumber;
-    private TextView workAdress;
-    private TextView homeAdress;
     private ImageView backgroundImage;
+    private CardView phonesCardView;
 
 
     public static ContactDetailFragment newInstance() {
@@ -42,6 +42,7 @@ public class ContactDetailFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.contact_detail_fragment, container, false);
 
+        //agarro el contacto que paso por bundle y lo utilizo para la vista
         Bundle bundle = getArguments();
 
         contact = (Contact) bundle.getSerializable(CONTACT_ID);
@@ -51,20 +52,36 @@ public class ContactDetailFragment extends Fragment {
         homeNumber = view.findViewById(R.id.contactDetailHomeNumberTextView);
         cellphoneNumber = view.findViewById(R.id.contactDetailCellphoneNumberTextView);
         officeNumber = view.findViewById(R.id.contactDetailofficeNumberTextView);
-        workAdress = view.findViewById(R.id.contactDetailWorkAdressTextView);
-        homeAdress = view.findViewById(R.id.contactDetailHomeAdressTextView);
         backgroundImage = view.findViewById(R.id.contactDetailBackgroundImageView);
+        phonesCardView = view.findViewById(R.id.contactDetailPhonesCardView);
+
 
         RequestBuilder<Drawable> thumbDrawable = Glide.with(view).load(contact.getThumb());
         Glide.with(view).load(contact.getPhoto()).thumbnail(thumbDrawable).into(photo);
         name.setText(contact.getFirst_name() + " " + contact.getLast_name());
-        birthDate.setText(contact.getUser_id());
-        homeNumber.setText(contact.getPhones().get(0).getNumber());
-        cellphoneNumber.setText(contact.getPhones().get(1).getNumber());
-        officeNumber.setText(contact.getPhones().get(2).getNumber());
-        workAdress.setText(contact.getUser_id());
-        homeAdress.setText(contact.getUser_id());
+        birthDate.setText(contact.getBirth_date());
         Glide.with(view).load(R.drawable.contactdetailbackground2).into(backgroundImage);
+
+        for (Phone phone : contact.getPhones()) {
+            if (phone.getNumber() != null) {
+                switch (phone.getType()) {
+                    case "Home":
+                        homeNumber.setVisibility(View.VISIBLE);
+                        homeNumber.setText("🏠: " + phone.getNumber());
+
+                    case "Cellphone":
+                        cellphoneNumber.setVisibility(View.VISIBLE);
+                        cellphoneNumber.setText("📱: " + phone.getNumber());
+
+                    case "Office":
+                        officeNumber.setVisibility(View.VISIBLE);
+                        officeNumber.setText("🏢: " + phone.getNumber());
+                }
+            } else {
+                phonesCardView.setVisibility(View.GONE);
+            }
+
+        }
 
         return view;
     }
