@@ -20,10 +20,13 @@ import com.example.admin.iguanafixandroidchallenge.R;
 import com.example.admin.iguanafixandroidchallenge.Adapter.ContactListRecyclerViewAdapter;
 import com.example.admin.iguanafixandroidchallenge.ViewModel.ContactListViewModel;
 
+import xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller;
+
 public class ContactListFragment extends Fragment {
 
     private EditText searchContactByNameEditText;
     private RecyclerView contactsRecyclerView;
+    private VerticalRecyclerViewFastScroller contactsRecyclerViewFastScroller;
     private ContactListViewModel mViewModel;
     private OnClickContactCellNotifier onClickContactCellNotifier;
     private View view;
@@ -42,6 +45,7 @@ public class ContactListFragment extends Fragment {
 
         searchContactByNameEditText = view.findViewById(R.id.contactListNameEditText);
         contactsRecyclerView = view.findViewById(R.id.contactListRecyclerView);
+        contactsRecyclerViewFastScroller = view.findViewById(R.id.contactListRecyclerViewFastScroller);
         search = "";
 
         mViewModel.getContactsfromAPIandNotifyAdapter();
@@ -53,6 +57,9 @@ public class ContactListFragment extends Fragment {
                         onClickContactCellNotifier.openClickedContact(contact);
                     }
                 }));
+
+        contactsRecyclerViewFastScroller.setRecyclerView(contactsRecyclerView);
+        contactsRecyclerView.setOnScrollListener(contactsRecyclerViewFastScroller.getOnScrollListener());
 
         mViewModel.setRecyclerView(contactsRecyclerView, getActivity());
 
