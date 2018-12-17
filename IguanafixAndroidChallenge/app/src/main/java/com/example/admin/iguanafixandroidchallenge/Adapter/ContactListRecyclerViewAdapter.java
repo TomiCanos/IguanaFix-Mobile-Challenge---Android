@@ -14,11 +14,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.example.admin.iguanafixandroidchallenge.Model.Contact;
 import com.example.admin.iguanafixandroidchallenge.R;
+import com.example.admin.iguanafixandroidchallenge.Model.RecyclerViewFastScroller;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter {
+public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter implements RecyclerViewFastScroller.BubbleTextGetter{
     private List<Contact> contacts;
     private OnClickContactCellNotifier onClickContactCellNotifier;
 
@@ -54,6 +55,14 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
+    //le da el texto para mostrar a la burbujita del fastscroller
+    @Override
+    public String getTextToShowInBubble(int pos) {
+
+        char result = contacts.get(pos).getFirst_name().charAt(0);
+        return Character.toString(result).toUpperCase();
+    }
+
     //une los datos de la vista con los del contacto recibido
     private class ViewHolder extends RecyclerView.ViewHolder {
         private TextView contactName;
@@ -79,8 +88,7 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter {
 
             //Hay un contacto que no tiene foto y como thumb trae un archivo svg en vez de un png
             if (!contact.getThumb().contains(".png")) {
-                Glide.with(itemView).as(PictureDrawable.class).load(contact.getThumb())
-                        .into(contactPhoto);
+                Glide.with(itemView).load(R.drawable.wonder_woman_thumbnail).into(contactPhoto);
             } else {
                 Glide.with(itemView).load(contact.getPhoto()).thumbnail(thumbDrawable)
                         .into(contactPhoto);

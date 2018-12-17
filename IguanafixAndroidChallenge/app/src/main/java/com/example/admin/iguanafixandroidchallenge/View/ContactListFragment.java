@@ -18,20 +18,18 @@ import android.widget.EditText;
 import com.example.admin.iguanafixandroidchallenge.Model.Contact;
 import com.example.admin.iguanafixandroidchallenge.R;
 import com.example.admin.iguanafixandroidchallenge.Adapter.ContactListRecyclerViewAdapter;
+import com.example.admin.iguanafixandroidchallenge.Model.RecyclerViewFastScroller;
 import com.example.admin.iguanafixandroidchallenge.ViewModel.ContactListViewModel;
-
-import xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller;
 
 public class ContactListFragment extends Fragment {
 
     private EditText searchContactByNameEditText;
     private RecyclerView contactsRecyclerView;
-    private VerticalRecyclerViewFastScroller contactsRecyclerViewFastScroller;
+    private RecyclerViewFastScroller contactsRecyclerViewFastScroller;
     private ContactListViewModel mViewModel;
     private OnClickContactCellNotifier onClickContactCellNotifier;
     private View view;
     private String search;
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -58,9 +56,9 @@ public class ContactListFragment extends Fragment {
                     }
                 }));
 
-        contactsRecyclerViewFastScroller.setRecyclerView(contactsRecyclerView);
-        contactsRecyclerView.setOnScrollListener(contactsRecyclerViewFastScroller.getOnScrollListener());
 
+        contactsRecyclerViewFastScroller.setRecyclerView(contactsRecyclerView);
+        contactsRecyclerViewFastScroller.setViewsToUse(R.layout.recycler_view_fast_scroller__fast_scroller, R.id.fastscroller_bubble, R.id.fastscroller_handle);
         mViewModel.setRecyclerView(contactsRecyclerView, getActivity());
 
         searchContactByNameEditText.addTextChangedListener(new TextWatcher() {
@@ -73,7 +71,9 @@ public class ContactListFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (count == 0) {
                     mViewModel.getContactsfromAPIandNotifyAdapter();
+                    contactsRecyclerViewFastScroller.setVisibility(View.VISIBLE);
                 } else {
+                    contactsRecyclerViewFastScroller.setVisibility(View.INVISIBLE);
                     search = s.toString();
                 }
                 mViewModel.setsortedListToAdapter(mViewModel.searchContactbyName(search));

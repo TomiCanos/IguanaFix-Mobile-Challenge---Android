@@ -55,9 +55,13 @@ public class ContactDetailFragment extends Fragment {
         backgroundImage = view.findViewById(R.id.contactDetailBackgroundImageView);
         phonesCardView = view.findViewById(R.id.contactDetailPhonesCardView);
 
-
-        RequestBuilder<Drawable> thumbDrawable = Glide.with(view).load(contact.getThumb());
-        Glide.with(view).load(contact.getPhoto()).thumbnail(thumbDrawable).into(photo);
+        //Hay un contacto que no tiene foto y como thumb trae un archivo svg en vez de un png
+        if (!contact.getThumb().contains(".png")) {
+            Glide.with(view).load(R.drawable.wonder_woman_thumbnail).into(photo);
+        } else {
+            RequestBuilder<Drawable> thumbDrawable = Glide.with(view).load(contact.getThumb());
+            Glide.with(view).load(contact.getPhoto()).thumbnail(thumbDrawable).into(photo);
+        }
         name.setText(contact.getFirst_name() + " " + contact.getLast_name());
         birthDate.setText(contact.getBirth_date());
         Glide.with(view).load(R.drawable.contactdetailbackground2).into(backgroundImage);

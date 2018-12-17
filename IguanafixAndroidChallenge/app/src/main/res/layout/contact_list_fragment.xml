@@ -50,15 +50,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView"></android.support.v7.widget.RecyclerView>
 
-    <xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller
+    <com.example.admin.iguanafixandroidchallenge.Model.RecyclerViewFastScroller
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:id="@+id/contactListRecyclerViewFastScroller"
-        android:layout_width="10dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:rfs_handleColor="@color/colorPrimary"></xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller>
-
+        app:layout_constraintBottom_toBottomOf="@+id/contactListRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/contactListRecyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"></com.example.admin.iguanafixandroidchallenge.Model.RecyclerViewFastScroller>
+    
 </android.support.constraint.ConstraintLayout>

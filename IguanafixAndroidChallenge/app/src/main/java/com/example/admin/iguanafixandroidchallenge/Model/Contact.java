@@ -51,4 +51,5 @@ public class Contact implements Serializable {
     public String getPhoto() {
         return photo;
     }
+
 }
