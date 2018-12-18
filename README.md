@@ -1,1 +1,7 @@
-IguanaFix Mobile Challenge - Android
+Que tal gente de IguanaFix, espero esten teniendo un excelente día.
+Les hago un resumen de los conflictos y situaciones que fui afrontando a mediado que fui desarrollando el challenge que me mandaron, aunque si desean, en los comentarios de cada commit voy contando que fue sucendiendo en cada etapa.
+La mayoria del codeo ocurrio en mi actual trabajo, en el cual cabe destacar tengo Arnet 2MB QUE ENCIMA SE CORTA(sufro cada hora de mi existencia). En total, el desarrollo me tomo +-25hs de codeo (está en el titulo de cada commit cuánto se tardo). Me costó bastante hacer la parte gráfica, aunque gracias a un proyecto personal de fin de semana que empecé mientras hacía este, descubrí el poder de las constrains y me ayudó un poco.
+Por el lado lógico, fue light. Todo menos el Fast Scroller con el índice ya lo habia utilizado en otros proyectos, por lo cual fue mas un tema de re-leer viejo código y volver a implementarlo.
+En el caso de que haya sido a proposito, no logre resolver de forma escalable el conflicto con las imagenes del contacto Carolina Romero. Investigué como convertir un archivo SVG a PNG y en todos los foros me decia que Android Studio lo tendría que hacer sólo desde una actualización que hicieron en 2015, asi que opté por agarrar el error y hardcodearle la imagen que pase a PNG manualmente.
+Para poder observar bien el funcionamiento del Fast Scroller, amplié el ancho de las celdas del Recycler View, ya que los contactos de la API son pocos. Mi altura de celda sugerida es 55dp, siendo la actual 250dp.
+Fuera de eso, y muchos idas y vueltas cambiando la parte visual, todo bien.
